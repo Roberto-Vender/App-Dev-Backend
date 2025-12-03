@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RiddleController;
 use App\Http\Controllers\LogicController;
+use App\Http\Controllers\EnduranceController;
 
 Route::post('/login', [UserController::class,'login']);
 Route::post('/register', [UserController::class,'register']);
@@ -20,3 +21,6 @@ Route::delete('/riddles/{id}', [RiddleController::class, 'destroy']);
 
 // Logic Questions API
 Route::match(['get', 'post'], '/logic/generate', [LogicController::class, 'generate']);
+
+// Endurance API (50 mixed riddle/logic questions)
+Route::match(['get', 'post'], '/endurance/generate', [EnduranceController::class, 'generate']);
