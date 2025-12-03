@@ -176,7 +176,8 @@ class RiddleController extends Controller
             ['question' => "What goes all around the house but never moves?", 'answer' => 'Fence'],
         ];
 
-        $pick = $samples[array_rand($samples)];
+        $index = ($page - 1) % count($samples);
+        $pick = $samples[$index];
 
         $answer = $pick['answer'];
         $hint = $this->buildWorkingHint($pick['question'], $answer);
@@ -274,6 +275,8 @@ if (Str::contains($q, 'bigger the more you take')) {
 if (Str::contains($q, 'around the house')) {
     return " It is built for protection or border.";
 }
+
+
 
 return " Read the riddle carefully and think of common objects.";
     }
